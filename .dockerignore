@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+.github/
+evals/RESULTS.md
+audit/
+*.db
+report.md

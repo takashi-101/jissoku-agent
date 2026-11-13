@@ -1,0 +1,25 @@
+[project]
+name = "jissoku-agent"
+version = "0.2.0"
+description = "業務量の実測データから、詰まり・条件別の件数・必要人数を報告書にするAIエージェント（ローカルLLM・閉域対応）"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["langgraph==1.2.21"]
+
+[tool.setuptools]
+packages = ["jissoku"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "S"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S603", "S108"]
+"evals/*" = ["S603"]
+
+[tool.bandit]
+exclude_dirs = ["tests", "evals", "sample"]
