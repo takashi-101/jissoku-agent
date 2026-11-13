@@ -1,0 +1,52 @@
+name: tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m unittest tests.test_basic -v
+      - name: Guardrail evals (must be 100%)
+        run: python evals/run_evals.py --check
+      - name: End-to-end run (rule mode) and audit-log verification
+        run: |
+          python run_agent.py sample/minato_shiminka.csv --settings sample/settings.json --yes --out report.md --audit audit/audit.jsonl
+          python -m jissoku.audit verify audit/audit.jsonl
+      - name: SQLite load and reconciliation
+        run: |
+          python -m jissoku.store load sample/minato_shiminka.csv --db jissoku.db
+          python -m jissoku.store reconcile --db jissoku.db
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt ruff bandit pip-audit
+      - name: Lint (ruff, incl. flake8-bandit rules)
+        run: ruff check .
+      - name: Static security analysis (bandit)
+        run: bandit -c pyproject.toml -r jissoku mcp_server.py run_agent.py
+      - name: Dependency vulnerability scan (pip-audit)
+        run: pip-audit -r requirements.txt
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t jissoku-agent .
+      - name: Run with networking disabled
+        run: docker run --rm --network none jissoku-agent
