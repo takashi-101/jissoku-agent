@@ -132,12 +132,14 @@ Dockerfile        非rootユーザー、通信遮断で実行
 
 ## 根拠（学習）
 
-| 機能 | 裏付けになる学習（発行元・名称・発行日） | 照会先（Credly） |
-|---|---|---|
-| LangGraph による分析エージェント（`jissoku/agent.py`） | Coursera（認定：IBM）「Agentic AI with LangChain and LangGraph」2026年11月2日 | https://www.credly.com/badges/bc08f1a5-df4d-4111-899f-46d43ebdd1ad |
-| MCPサーバー（`mcp_server.py`） | Coursera（認定：IBM）「Build AI Agents Using MCP」2026年11月3日 | https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc |
-| 指標IDによるグラウンディングと評価（`jissoku/grounding.py`、`evals/`） | Coursera（認定：IBM）「IBM Generative AI Engineering Professional Certificate」2026年11月9日 | https://www.credly.com/badges/7364adab-8350-4eef-b94c-94e8dc659570 |
-| SQLiteへの取り込みと検算（`jissoku/store.py`） | Amazon Web Services Training and Certification「AWS Educate Getting Started with Databases - Training Badge」2025年6月1日 | https://www.credly.com/badges/0f3404b3-6419-4d48-934f-507f0364e032 |
+| 求められる力 | 機能 | 裏付けになる学習（発行元・名称・発行日） | 照会先（Credly） |
+|---|---|---|---|
+| 生成AI・LLMの実装（RAG・エージェント・MCP） | LangGraph による分析エージェント（`jissoku/agent.py`） | Coursera（認定：IBM）「Agentic AI with LangChain and LangGraph」2026年11月2日 | https://www.credly.com/badges/bc08f1a5-df4d-4111-899f-46d43ebdd1ad |
+| 生成AI・LLMの実装（RAG・エージェント・MCP） | MCPサーバー（`mcp_server.py`） | Coursera（認定：IBM）「Build AI Agents Using MCP」2026年11月3日 | https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc |
+| 生成AI・LLMの実装（RAG・エージェント・MCP） | 指標IDによるグラウンディングと評価（`jissoku/grounding.py`、`evals/`） | Coursera（認定：IBM）「IBM Generative AI Engineering Professional Certificate」2026年11月9日 | https://www.credly.com/badges/7364adab-8350-4eef-b94c-94e8dc659570 |
+| データ活用（Python・SQL・BI） | SQLiteへの取り込みと検算（`jissoku/store.py`） | Amazon Web Services Training and Certification「AWS Educate Getting Started with Databases - Training Badge」2025年6月1日 | https://www.credly.com/badges/0f3404b3-6419-4d48-934f-507f0364e032 |
+
+「求められる力」の分け方は、[プロフィール](https://github.com/takashi-101) の「FDE・AXで求められる力と、その根拠」と同じです。
 
 ## ライセンス
 MIT
