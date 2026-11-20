@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "業務量の実測データから、詰まり・条件別の件数・必要人数を報告書にするAIエージェント（ローカルLLM・閉域対応）"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-dependencies = ["langgraph==1.2.21"]
+dependencies = ["langgraph==1.2.22"]
 
 [tool.setuptools]
 packages = ["jissoku"]
